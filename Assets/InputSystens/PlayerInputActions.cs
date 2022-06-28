@@ -55,7 +55,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""WaekKick"",
+                    ""name"": ""WeakKick"",
                     ""type"": ""Button"",
                     ""id"": ""084c5ca3-d2f2-4bdf-a108-c0d607698b7c"",
                     ""expectedControlType"": ""Button"",
@@ -145,7 +145,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""b8d4d762-b8f3-4588-8171-eb975dd446a0"",
-                    ""path"": ""<Keyboard>/a"",
+                    ""path"": ""<Keyboard>/u"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -156,11 +156,11 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""a3dccfe8-cd53-4d59-9e1f-4bff23862470"",
-                    ""path"": ""<Keyboard>/z"",
+                    ""path"": ""<Keyboard>/j"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""WaekKick"",
+                    ""action"": ""WeakKick"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -197,7 +197,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_Moviment = m_Player.FindAction("Moviment", throwIfNotFound: true);
         m_Player_WeakPunch = m_Player.FindAction("WeakPunch", throwIfNotFound: true);
-        m_Player_WaekKick = m_Player.FindAction("WaekKick", throwIfNotFound: true);
+        m_Player_WeakKick = m_Player.FindAction("WeakKick", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -260,7 +260,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_Moviment;
     private readonly InputAction m_Player_WeakPunch;
-    private readonly InputAction m_Player_WaekKick;
+    private readonly InputAction m_Player_WeakKick;
     public struct PlayerActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -268,7 +268,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
         public InputAction @Moviment => m_Wrapper.m_Player_Moviment;
         public InputAction @WeakPunch => m_Wrapper.m_Player_WeakPunch;
-        public InputAction @WaekKick => m_Wrapper.m_Player_WaekKick;
+        public InputAction @WeakKick => m_Wrapper.m_Player_WeakKick;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -287,9 +287,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @WeakPunch.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnWeakPunch;
                 @WeakPunch.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnWeakPunch;
                 @WeakPunch.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnWeakPunch;
-                @WaekKick.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnWaekKick;
-                @WaekKick.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnWaekKick;
-                @WaekKick.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnWaekKick;
+                @WeakKick.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnWeakKick;
+                @WeakKick.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnWeakKick;
+                @WeakKick.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnWeakKick;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -303,9 +303,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @WeakPunch.started += instance.OnWeakPunch;
                 @WeakPunch.performed += instance.OnWeakPunch;
                 @WeakPunch.canceled += instance.OnWeakPunch;
-                @WaekKick.started += instance.OnWaekKick;
-                @WaekKick.performed += instance.OnWaekKick;
-                @WaekKick.canceled += instance.OnWaekKick;
+                @WeakKick.started += instance.OnWeakKick;
+                @WeakKick.performed += instance.OnWeakKick;
+                @WeakKick.canceled += instance.OnWeakKick;
             }
         }
     }
@@ -333,6 +333,6 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         void OnJump(InputAction.CallbackContext context);
         void OnMoviment(InputAction.CallbackContext context);
         void OnWeakPunch(InputAction.CallbackContext context);
-        void OnWaekKick(InputAction.CallbackContext context);
+        void OnWeakKick(InputAction.CallbackContext context);
     }
 }

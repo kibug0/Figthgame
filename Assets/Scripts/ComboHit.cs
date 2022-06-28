@@ -10,9 +10,13 @@ public class ComboHit : MonoBehaviour
     //Variaveis contaveis
     public int noOfClicks = 0;
     float lastClickedTime = 0;
-    public float maxComboDelay = 0.9f;
+    public float maxComboDelay = 0.5f;
 
-    //input system
+    private int ComboFases = 1;
+
+    public int MaxComboFases = 3;
+
+    #region InputSystem
     private PlayerInputActions playercontrol;
 
     private void Awake() 
@@ -31,6 +35,7 @@ public class ComboHit : MonoBehaviour
     {
         playercontrol.Disable();
     }
+    #endregion
     // Start is called before the first frame update
     void Start()
     {
@@ -49,54 +54,49 @@ public class ComboHit : MonoBehaviour
         if(Time.time - lastClickedTime > maxComboDelay)
         {
             noOfClicks = 0;
+            anim.SetBool("Attack", false);
+            ComboFases = 1;
         }
 
-        if(playercontrol.Player.WeakPunch.triggered)
+        if(playercontrol.Player.WeakPunch.triggered && noOfClicks!=MaxComboFases)
         {
+            Debug.Log("Soco");
             lastClickedTime = Time.time;
             noOfClicks++;
 
             if(noOfClicks == 1)
             {
-                anim.SetBool("Attack1", true);
+                anim.SetBool("Attack", true);
             }
-            noOfClicks = Mathf.Clamp(noOfClicks,0,3);
+            noOfClicks = Mathf.Clamp(noOfClicks,0,MaxComboFases);
+        } 
+        else
+        {
+            anim.SetBool("Attack", false);
         }
-
+        anim.SetInteger("ComboFase", ComboFases);
         
         
     }
 
     public void return1()
     {
-        if(noOfClicks >= 2)
+        Debug.Log("Soco");
+        if(noOfClicks > ComboFases)
         {
-            anim.SetBool("Attack2", true);
+            ComboFases = noOfClicks;
+            anim.SetBool("Attack", true);
         }
         else
         {
-            anim.SetBool("Attack1", false);
             noOfClicks = 0;
+            anim.SetBool("Attack", false);
+            ComboFases = 1;
         }
+        
+        
+        
     }
 
-    public void return2()
-    {
-        if(noOfClicks >= 3)
-        {
-            anim.SetBool("Attack3", true);
-        }
-        else
-        {
-            anim.SetBool("Attack2", false);
-        }
-    }
-
-    public void return3()
-    {
-        anim.SetBool("Attack1",false);
-        anim.SetBool("Attack2", false);
-        anim.SetBool("Attack3", false);
-        noOfClicks = 0;
-    }
+    
 }

@@ -33,7 +33,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "WaekKick",
+                    "name": "WeakKick",
                     "type": "Button",
                     "id": "084c5ca3-d2f2-4bdf-a108-c0d607698b7c",
                     "expectedControlType": "Button",
@@ -123,7 +123,7 @@
                 {
                     "name": "",
                     "id": "b8d4d762-b8f3-4588-8171-eb975dd446a0",
-                    "path": "<Keyboard>/a",
+                    "path": "<Keyboard>/u",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -134,11 +134,11 @@
                 {
                     "name": "",
                     "id": "a3dccfe8-cd53-4d59-9e1f-4bff23862470",
-                    "path": "<Keyboard>/z",
+                    "path": "<Keyboard>/j",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "WaekKick",
+                    "action": "WeakKick",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
