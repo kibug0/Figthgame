@@ -253,6 +253,7 @@ public class ComboInput
 [System.Serializable]
 public class Combo
 {
+    public string name;
     public List<ComboInput> inputs;
     public Attack comboAttack;
     public UnityEvent onInputted;

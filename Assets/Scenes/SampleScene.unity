@@ -286,6 +286,58 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74136ea5e8e4db149b5bd8ca5dd2a25b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &694279687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 694279684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63a0c67949143e249bb1f69eadd8116e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  punchheavykey: 0
+  punchlightkey: 0
+  kickheavykey: 0
+  kicklightkey: 0
+  punchheavyAttack:
+    name: 
+    length: 0
+  punchlightAttack:
+    name: 
+    length: 0
+  kickheavyAttack:
+    name: 
+    length: 0
+  kicklighAttack:
+    name: 
+    length: 0
+  combos:
+  - name: 
+    inputs:
+    - type: 0
+    - type: 0
+    comboAttack:
+      name: 
+      length: 0
+    onInputted:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: 
+          m_MethodName: 
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: 
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  ComboLeeway: 0.25
   anim: {fileID: 694279685}
 --- !u!114 &761390753 stripped
 MonoBehaviour:
