@@ -62,6 +62,24 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""HeavyPunch"",
+                    ""type"": ""Button"",
+                    ""id"": ""199a348f-d0a8-467c-8bfe-59521f11567f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""HeavyKick"",
+                    ""type"": ""Button"",
+                    ""id"": ""09fe4630-8ad1-45e3-914e-45c40beab0c1"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -163,6 +181,28 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""action"": ""WeakKick"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""de1b1591-bbb7-4ee3-932d-55dfc2114d24"",
+                    ""path"": ""<Keyboard>/i"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""HeavyPunch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ce39fb47-68d1-4e25-b8e4-0ecc3e8e7f95"",
+                    ""path"": ""<Keyboard>/k"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""HeavyKick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -198,6 +238,8 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         m_Player_Moviment = m_Player.FindAction("Moviment", throwIfNotFound: true);
         m_Player_WeakPunch = m_Player.FindAction("WeakPunch", throwIfNotFound: true);
         m_Player_WeakKick = m_Player.FindAction("WeakKick", throwIfNotFound: true);
+        m_Player_HeavyPunch = m_Player.FindAction("HeavyPunch", throwIfNotFound: true);
+        m_Player_HeavyKick = m_Player.FindAction("HeavyKick", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -261,6 +303,8 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Moviment;
     private readonly InputAction m_Player_WeakPunch;
     private readonly InputAction m_Player_WeakKick;
+    private readonly InputAction m_Player_HeavyPunch;
+    private readonly InputAction m_Player_HeavyKick;
     public struct PlayerActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -269,6 +313,8 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         public InputAction @Moviment => m_Wrapper.m_Player_Moviment;
         public InputAction @WeakPunch => m_Wrapper.m_Player_WeakPunch;
         public InputAction @WeakKick => m_Wrapper.m_Player_WeakKick;
+        public InputAction @HeavyPunch => m_Wrapper.m_Player_HeavyPunch;
+        public InputAction @HeavyKick => m_Wrapper.m_Player_HeavyKick;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -290,6 +336,12 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @WeakKick.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnWeakKick;
                 @WeakKick.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnWeakKick;
                 @WeakKick.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnWeakKick;
+                @HeavyPunch.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHeavyPunch;
+                @HeavyPunch.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHeavyPunch;
+                @HeavyPunch.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHeavyPunch;
+                @HeavyKick.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHeavyKick;
+                @HeavyKick.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHeavyKick;
+                @HeavyKick.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHeavyKick;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -306,6 +358,12 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @WeakKick.started += instance.OnWeakKick;
                 @WeakKick.performed += instance.OnWeakKick;
                 @WeakKick.canceled += instance.OnWeakKick;
+                @HeavyPunch.started += instance.OnHeavyPunch;
+                @HeavyPunch.performed += instance.OnHeavyPunch;
+                @HeavyPunch.canceled += instance.OnHeavyPunch;
+                @HeavyKick.started += instance.OnHeavyKick;
+                @HeavyKick.performed += instance.OnHeavyKick;
+                @HeavyKick.canceled += instance.OnHeavyKick;
             }
         }
     }
@@ -334,5 +392,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         void OnMoviment(InputAction.CallbackContext context);
         void OnWeakPunch(InputAction.CallbackContext context);
         void OnWeakKick(InputAction.CallbackContext context);
+        void OnHeavyPunch(InputAction.CallbackContext context);
+        void OnHeavyKick(InputAction.CallbackContext context);
     }
 }

@@ -4,17 +4,30 @@ using UnityEngine;
 
 public class ComboHit : MonoBehaviour
 {
+    /*
     //animator
     public Animator anim;
 
-    //Variaveis contaveis
-    public int noOfClicks = 0;
-    float lastClickedTime = 0;
-    public float maxComboDelay = 0.5f;
+    public class Combotype
+    {
+        //Nome do inimigo
+        public string ComoboName;
 
-    private int ComboFases = 1;
 
-    public int MaxComboFases = 3;
+        //Variaveis contaveis
+        public int noOfClicks = 0;
+        float lastClickedTime = 0;
+        public float maxComboDelay = 0.5f;
+
+        private int ComboFases = 1;
+
+        public int MaxComboFases = 3;
+
+    }
+
+    public List<Combotype> Combo;
+
+    
 
     #region InputSystem
     private PlayerInputActions playercontrol;
@@ -51,7 +64,7 @@ public class ComboHit : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Time.time - lastClickedTime > maxComboDelay)
+        if(Time.time - Combo[0].lastClickedTime > Combo.maxComboDelay)
         {
             noOfClicks = 0;
             anim.SetBool("Attack", false);
@@ -96,7 +109,7 @@ public class ComboHit : MonoBehaviour
         
         
         
-    }
+    }*/
 
     
 }
