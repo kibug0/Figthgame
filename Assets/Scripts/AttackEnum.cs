@@ -1,8 +1,8 @@
-public enum TestMyEnum 
+public enum AttackEnum 
 {
 	socoforte = 0,
 	socofraco = 1,
 	chuteforte = 2,
-	chutefraco = 3,
+	fortefraco = 3,
 
 }

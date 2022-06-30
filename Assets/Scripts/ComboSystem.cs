@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEditor;
 
-
+public enum movatt{Attack, Moviment};
 public class ComboSystem : MonoBehaviour
 {
     #region InputSystem
@@ -29,6 +29,7 @@ public class ComboSystem : MonoBehaviour
     }
     #endregion
 
+    
     [Header("Directions")]
     public List<string> MoveDirections;
     
@@ -37,7 +38,7 @@ public class ComboSystem : MonoBehaviour
     
 
     [Header("Attacks properties")]
-    public List<Attack> Attacks;
+    public List<GameInput> Attacks;
 
     [Header("combo properties")]
     public List<Combo> combos;
@@ -49,7 +50,7 @@ public class ComboSystem : MonoBehaviour
     [Header("Components")]
     public Animator anim;
 
-    Attack curAttack = null;
+    GameInput curAttack = null;
     ComboInput lastInput = null;
 
     List<int> currentCombos = new List<int>();
@@ -182,7 +183,7 @@ public class ComboSystem : MonoBehaviour
         }
     }
 
-    Attack GetAttackFromType(TestMyEnum t)
+    GameInput GetAttackFromType(AttackEnum t)
     {
         for(int i = 0; i<Attacks.Count;i++)
         {
@@ -220,45 +221,53 @@ public class ComboSystem : MonoBehaviour
     {
         curAttack = GetAttackFromType(att.Attacktype);
         timer = att.length;
-        anim.Play(att.AnimationName, -1, 0);
+        if(att.MOorAT == movatt.Attack)
+        {anim.Play(att.AnimationName, -1, 0);}
+        
     }
 
 }
 
 [System.Serializable]
-public class Attack
+public class GameInput
 {
     public string name;
     public float length = 0.5f;
 
+    
+    [Header("Choose if is for moviment or Attack")]
+
+    public movatt MOorAT;
+
+
+    [Header("this Moviment direction")]
+    public AttackEnum direction;
+
+    
+
+
+    [Header("this attack type")]
+    public AttackEnum Attacktype;
+
     public string AnimationName;
+
 
     [Header("Input")]
     public KeyCode KeyInput;
-
-    [Header("this attack type")]
-    public TestMyEnum Attacktype;
+    
 }
 
-[System.Serializable]
-public class MovimentInputs
-{
-    public string name;
-    public float length = 0.5f;
-
-    public string AnimationName;
-
-    [Header("Input")]
-    public KeyCode KeyInput;
-
-    [Header("this attack type")]
-    public TestMyEnum Attacktype;
-}
 
 [System.Serializable]
 public class ComboInput
 {
-    public TestMyEnum Attacktype;
+    [Header("Choose if is for moviment or Attack")]
+
+    public movatt MOorAT;
+
+    public AttackEnum Attacktype;
+
+    public AttackEnum direction;
     public string AnimationName;
 
     public float length = 0.5f;
@@ -267,7 +276,7 @@ public class ComboInput
     
     //Input de movimento para combos mais precisos
 
-    public ComboInput(TestMyEnum t)
+    public ComboInput(AttackEnum t)
     {
         Attacktype = t;
     }
