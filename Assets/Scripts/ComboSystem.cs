@@ -1,10 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEditor;
 
 
-public enum AttackType{punchheavyAttack = 0, punchlightAttack = 1, kickheavyAttack = 2, kicklighAttack = 3}
 public class ComboSystem : MonoBehaviour
 {
     #region InputSystem
@@ -28,20 +29,17 @@ public class ComboSystem : MonoBehaviour
     }
     #endregion
 
-    [Header("Inputs")]
-    public KeyCode punchheavykey;
-    public KeyCode punchlightkey;
-    public KeyCode kickheavykey;
-    public KeyCode kicklightkey;
-    
-    [Header("Attacks")]
-    public Attack punchheavyAttack;
-    public Attack punchlightAttack;
-    public Attack kickheavyAttack;
-    public Attack kicklighAttack;
+    [Header("Types of attacks")]
+    public List<string> AttackTypes;
 
+    [Header("Attacks properties")]
+    public List<Attack> Attacks;
+
+    [Header("combo properties")]
     public List<Combo> combos;
 
+    
+    [Header("Time to next attack")]
     public float ComboLeeway = 0.25f;
 
     [Header("Components")]
@@ -61,6 +59,7 @@ public class ComboSystem : MonoBehaviour
     {
         anim=GetComponent<Animator>();
         PrimeCombo();
+        
     }
 
     void PrimeCombo()
@@ -72,7 +71,8 @@ public class ComboSystem : MonoBehaviour
             {
                 //chama a funcao de ataque com os combos do ataque
                 skip = true;
-                Attack(c.comboAttack);
+                //Attack(c.comboAttack);
+                Attack(c.inputs[c.inputs.Count]);
                 ResetCombos();
             });
         }
@@ -105,7 +105,8 @@ public class ComboSystem : MonoBehaviour
             {
                if(lastInput != null)
                {
-                    Attack(GetAttackFromType(lastInput.type));
+                    //Attack(GetAttackFromType(lastInput.Attacktype));
+                    Attack(lastInput);
                     lastInput = null;
                } 
 
@@ -116,27 +117,22 @@ public class ComboSystem : MonoBehaviour
         else{leeway = 0;}
 
         ComboInput input = null;
+
+        for(int i = 0; i<Attacks.Count;i++)
+        {
+            if(Input.GetKeyDown(Attacks[i].KeyInput))
+            {
+                input = new ComboInput(Attacks[i].Attacktype);
+            }
+            if(input == null)
+            {
+                return;
+            }
+            
+        }
         
-        if(playercontrol.Player.HeavyPunch.WasPerformedThisFrame())
-        {
-            input = new ComboInput(AttackType.punchheavyAttack);
-        }
-        if(playercontrol.Player.WeakPunch.WasPerformedThisFrame())
-        {
-            input = new ComboInput(AttackType.punchlightAttack);
-        }
-        if(playercontrol.Player.HeavyKick.WasPerformedThisFrame())
-        {
-            input = new ComboInput(AttackType.kickheavyAttack);
-        }
-        if(playercontrol.Player.WeakKick.WasPerformedThisFrame())
-        {
-            input = new ComboInput(AttackType.kicklighAttack);
-        }
-        if(input == null)
-        {
-            return;
-        }
+        
+        
         lastInput = input;
 
         List<int> remove = new List<int>();
@@ -177,29 +173,24 @@ public class ComboSystem : MonoBehaviour
 
         if(currentCombos.Count<=0)
         {
-            Attack(GetAttackFromType(input.type ));
+            //Attack(GetAttackFromType(input.Attacktype));
+            Attack(input);
         }
     }
 
-    Attack GetAttackFromType(AttackType t)
+    Attack GetAttackFromType(TestMyEnum t)
     {
-        if(t == AttackType.punchheavyAttack)
+        for(int i = 0; i<Attacks.Count;i++)
         {
-            return punchheavyAttack;
-        }
-        if(t == AttackType.punchlightAttack)
-        {
-            return punchlightAttack;
-        }
-        if(t == AttackType.kickheavyAttack)
-        {
-            return kickheavyAttack;
-        }
-        if(t == AttackType.kicklighAttack)
-        {
-            return kicklighAttack;
+            if(t == Attacks[i].Attacktype)
+            {
+                return Attacks[i];
+            }
+            
         }
         return null;
+        
+        
     }
     
     void ResetCombos()
@@ -214,14 +205,19 @@ public class ComboSystem : MonoBehaviour
         currentCombos.Clear();
     }
 
-    void Attack(Attack att)
+    /*void Attack(Attack att)
     {
         curAttack = att;
         timer = att.length;
-        anim.Play(att.name, -1, 0);
-    }
+        anim.Play(att.AnimationName, -1, 0);
+    }*/
 
-    
+    void Attack(ComboInput att)
+    {
+        curAttack = GetAttackFromType(att.Attacktype);
+        timer = att.length;
+        anim.Play(att.AnimationName, -1, 0);
+    }
 
 }
 
@@ -229,23 +225,37 @@ public class ComboSystem : MonoBehaviour
 public class Attack
 {
     public string name;
-    public float length;
+    public float length = 0.5f;
+
+    public string AnimationName;
+
+    [Header("Input")]
+    public KeyCode KeyInput;
+
+    [Header("this attack type")]
+    public TestMyEnum Attacktype;
 }
 
 [System.Serializable]
 public class ComboInput
 {
-    public AttackType type;
+    public TestMyEnum Attacktype;
+    public string AnimationName;
+
+    public float length = 0.5f;
+
+    
+    
     //Input de movimento para combos mais precisos
 
-    public ComboInput(AttackType t)
+    public ComboInput(TestMyEnum t)
     {
-        type = t;
+        Attacktype = t;
     }
 
     public bool isSameAs(ComboInput test)
     {
-        return(type == test.type);//Adds && movement == test.movement
+        return(Attacktype == test.Attacktype);//Adds && movement == test.movement
     }
     
 }
@@ -254,8 +264,12 @@ public class ComboInput
 public class Combo
 {
     public string name;
+
+    
     public List<ComboInput> inputs;
-    public Attack comboAttack;
+    //public Attack comboAttack;
+
+    
     public UnityEvent onInputted;
 
     int curInput = 0;
@@ -290,3 +304,5 @@ public class Combo
         curInput = 0;
     }
 }
+
+
