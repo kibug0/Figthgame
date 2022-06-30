@@ -29,8 +29,12 @@ public class ComboSystem : MonoBehaviour
     }
     #endregion
 
+    [Header("Directions")]
+    public List<string> MoveDirections;
+    
     [Header("Types of attacks")]
     public List<string> AttackTypes;
+    
 
     [Header("Attacks properties")]
     public List<Attack> Attacks;
@@ -223,6 +227,21 @@ public class ComboSystem : MonoBehaviour
 
 [System.Serializable]
 public class Attack
+{
+    public string name;
+    public float length = 0.5f;
+
+    public string AnimationName;
+
+    [Header("Input")]
+    public KeyCode KeyInput;
+
+    [Header("this attack type")]
+    public TestMyEnum Attacktype;
+}
+
+[System.Serializable]
+public class MovimentInputs
 {
     public string name;
     public float length = 0.5f;

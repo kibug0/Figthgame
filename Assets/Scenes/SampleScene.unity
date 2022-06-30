@@ -298,6 +298,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63a0c67949143e249bb1f69eadd8116e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MoveDirections: []
   AttackTypes: []
   Attacks:
   - name: socoforte
