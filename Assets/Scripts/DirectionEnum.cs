@@ -1,8 +1,8 @@
 public enum DirectionEnum 
 {
-	rigth = 0,
-	up = 1,
-	left = 2,
-	down = 3,
+	esquerda = 0,
+	direita = 1,
+	cima = 2,
+	baixo = 3,
 
 }

@@ -163,17 +163,98 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1652147965}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 63a0c67949143e249bb1f69eadd8116e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveDirections: []
-  AttackTypes: []
-  Attacks: []
-  combos: []
+  MoveDirections:
+  - esquerda
+  - direita
+  - cima
+  - baixo
+  AttackTypes:
+  - socofraco
+  - socoforte
+  - chuteforte
+  - chutefraco
+  Attacks:
+  - name: Socofraco
+    length: 0
+    MOorAT: 0
+    direction: 0
+    Attacktype: 0
+    AnimationName: weakpunch
+    KeyInput: 117
+  - name: Socoforte
+    length: 0
+    MOorAT: 0
+    direction: 0
+    Attacktype: 1
+    AnimationName: strongpunch
+    KeyInput: 105
+  - name: chutefraco
+    length: 0
+    MOorAT: 0
+    direction: 0
+    Attacktype: 3
+    AnimationName: weakkick
+    KeyInput: 106
+  - name: chuteforte
+    length: 0
+    MOorAT: 0
+    direction: 0
+    Attacktype: 2
+    AnimationName: strongkick
+    KeyInput: 107
+  combos:
+  - name: sequencia de socos fracos
+    inputs:
+    - MOorAT: 0
+      Attacktype: 0
+      direction: 0
+      AnimationName: weakpunch
+      length: 0
+    - MOorAT: 0
+      Attacktype: 0
+      direction: 0
+      AnimationName: weakpunch
+      length: 0
+    - MOorAT: 0
+      Attacktype: 0
+      direction: 0
+      AnimationName: weakpunch
+      length: 0
+    onInputted:
+      m_PersistentCalls:
+        m_Calls: []
+  - name: tornado
+    inputs:
+    - MOorAT: 0
+      Attacktype: 1
+      direction: 0
+      AnimationName: strongpunch
+      length: 0
+    - MOorAT: 0
+      Attacktype: 2
+      direction: 0
+      AnimationName: strongkick
+      length: 0
+    - MOorAT: 0
+      Attacktype: 0
+      direction: 0
+      AnimationName: weakpunch
+      length: 0
+    onInputted:
+      m_PersistentCalls:
+        m_Calls: []
+  - name: radukan
+    inputs: []
+    onInputted:
+      m_PersistentCalls:
+        m_Calls: []
   ComboLeeway: 0.25
-  anim: {fileID: 0}
+  anim: {fileID: 1652147968}
 --- !u!95 &1652147968
 Animator:
   serializedVersion: 4

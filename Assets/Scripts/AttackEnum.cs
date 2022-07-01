@@ -1,8 +1,8 @@
 public enum AttackEnum 
 {
-	socoforte = 0,
-	socofraco = 1,
+	socofraco = 0,
+	socoforte = 1,
 	chuteforte = 2,
-	fortefraco = 3,
+	chutefraco = 3,
 
 }
