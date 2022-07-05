@@ -178,82 +178,134 @@ MonoBehaviour:
   - socoforte
   - chuteforte
   - chutefraco
-  Attacks:
-  - name: Socofraco
-    length: 0
-    MOorAT: 0
-    direction: 0
-    Attacktype: 0
-    AnimationName: weakpunch
+  Inputproperties:
+  - name: Soco forte
     KeyInput: 117
-  - name: Socoforte
-    length: 0
     MOorAT: 0
     direction: 0
     Attacktype: 1
-    AnimationName: strongpunch
-    KeyInput: 105
-  - name: chutefraco
-    length: 0
+  - name: Soco fraco
+    KeyInput: 106
     MOorAT: 0
     direction: 0
-    Attacktype: 3
-    AnimationName: weakkick
-    KeyInput: 106
-  - name: chuteforte
-    length: 0
+    Attacktype: 0
+  - name: chute forte
+    KeyInput: 105
     MOorAT: 0
     direction: 0
     Attacktype: 2
-    AnimationName: strongkick
+  - name: chute fraco
     KeyInput: 107
+    MOorAT: 0
+    direction: 0
+    Attacktype: 3
+  - name: esquerda
+    KeyInput: 97
+    MOorAT: 1
+    direction: 0
+    Attacktype: 0
+  - name: direita
+    KeyInput: 100
+    MOorAT: 0
+    direction: 0
+    Attacktype: 0
+  - name: cima
+    KeyInput: 119
+    MOorAT: 0
+    direction: 0
+    Attacktype: 0
+  - name: baixo
+    KeyInput: 115
+    MOorAT: 0
+    direction: 0
+    Attacktype: 0
   combos:
   - name: sequencia de socos fracos
     inputs:
-    - MOorAT: 0
-      Attacktype: 0
+    - Activate: 0
+      name: soco fraco
+      MOorAT: 0
       direction: 0
-      AnimationName: weakpunch
-      length: 0
-    - MOorAT: 0
       Attacktype: 0
-      direction: 0
       AnimationName: weakpunch
-      length: 0
-    - MOorAT: 0
+      length: 1
+    - Activate: 0
+      name: soco fraco
+      MOorAT: 0
+      direction: 0
       Attacktype: 0
-      direction: 0
       AnimationName: weakpunch
-      length: 0
+      length: 1
+    - Activate: 0
+      name: soco fraco
+      MOorAT: 0
+      direction: 0
+      Attacktype: 0
+      AnimationName: weakpunch
+      length: 1
     onInputted:
       m_PersistentCalls:
         m_Calls: []
   - name: tornado
     inputs:
-    - MOorAT: 0
+    - Activate: 0
+      name: 
+      MOorAT: 0
+      direction: 0
       Attacktype: 1
-      direction: 0
       AnimationName: strongpunch
-      length: 0
-    - MOorAT: 0
+      length: 1
+    - Activate: 0
+      name: 
+      MOorAT: 0
+      direction: 0
       Attacktype: 2
-      direction: 0
       AnimationName: strongkick
-      length: 0
-    - MOorAT: 0
-      Attacktype: 0
+      length: 1
+    - Activate: 0
+      name: 
+      MOorAT: 0
       direction: 0
+      Attacktype: 0
       AnimationName: weakpunch
-      length: 0
+      length: 1
     onInputted:
       m_PersistentCalls:
         m_Calls: []
   - name: radukan
-    inputs: []
+    inputs:
+    - Activate: 0
+      name: tras
+      MOorAT: 1
+      direction: 0
+      Attacktype: 0
+      AnimationName: 
+      length: 1
+    - Activate: 0
+      name: baixo
+      MOorAT: 1
+      direction: 3
+      Attacktype: 0
+      AnimationName: 
+      length: 1
+    - Activate: 0
+      name: frente
+      MOorAT: 1
+      direction: 1
+      Attacktype: 0
+      AnimationName: 
+      length: 1
+    - Activate: 0
+      name: socofraco
+      MOorAT: 0
+      direction: 0
+      Attacktype: 0
+      AnimationName: especialradukan
+      length: 1
     onInputted:
       m_PersistentCalls:
         m_Calls: []
-  ComboLeeway: 0.25
+  ComboLeeway: 1
   anim: {fileID: 1652147968}
 --- !u!95 &1652147968
 Animator:

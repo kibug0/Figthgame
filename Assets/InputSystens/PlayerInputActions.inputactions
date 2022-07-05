@@ -106,7 +106,7 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "1D Axis",
+                    "name": "Arrow",
                     "id": "1c866003-62fc-43a2-b46a-e2ada362cf3f",
                     "path": "1DAxis",
                     "interactions": "",
@@ -134,6 +134,39 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
+                    "action": "Moviment",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "WASD",
+                    "id": "12a7f89d-2738-49ca-88de-ebf0899acd02",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Moviment",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "10659da9-65bc-4535-b075-2d35bf696575",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Moviment",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "a6f7b5e7-9cc5-47de-b24b-c0cf048ff6f5",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
                     "action": "Moviment",
                     "isComposite": false,
                     "isPartOfComposite": true

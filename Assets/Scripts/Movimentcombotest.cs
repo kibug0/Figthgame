@@ -36,19 +36,21 @@ public class Movimentcombotest : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.UpArrow))
+        
+
+        if(playercontrol.Player.Jump.WasPerformedThisFrame())
         {
             anim.SetTrigger("up");
         }
-        if(Input.GetKeyDown(KeyCode.RightArrow))
+        if(playercontrol.Player.Moviment.Equals(1) || Input.GetKeyDown(KeyCode.RightArrow))
         {
             anim.SetTrigger("right");
         }
-        if(Input.GetKeyDown(KeyCode.LeftArrow))
+        if(playercontrol.Player.Moviment.Equals(-1) || Input.GetKeyDown(KeyCode.LeftArrow))
         {
             anim.SetTrigger("left");
         }
-        if(Input.GetKeyDown(KeyCode.DownArrow))
+        if(Input.GetKeyDown(KeyCode.DownArrow)||Input.GetKeyDown(KeyCode.S))
         {
             anim.SetTrigger("down");
         }
