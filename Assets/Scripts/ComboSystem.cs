@@ -123,7 +123,7 @@ public class ComboSystem : MonoBehaviour
     {
         for(int i = 0; i < currentCombos.Count; i++)
         {
-            Debug.Log(currentCombos[i]);
+            //Debug.Log("Currentcombos"+currentCombos[i]);
         }
 
 
@@ -167,7 +167,7 @@ public class ComboSystem : MonoBehaviour
                     
                     
                     //chama a funcao Attack que ira ativar a animcao e definir outras coisas
-                    
+                    Debug.Log(lastInput.AnimationName);
                     Attack(lastInput);
 
                     //Seta o lastInput para null
@@ -202,6 +202,7 @@ public class ComboSystem : MonoBehaviour
                 input = new ComboInput(Inputproperties[i].Attacktype);
                 
                 
+                
             }
             
             
@@ -215,11 +216,19 @@ public class ComboSystem : MonoBehaviour
         }
         
         
+            
+        
+        
+        if(lastInput != null)
+        {
+            lastInput.Activate = false;
+        }
+        
         //Fazendo o LastInput ser igual ao input atual que foi apertado
         lastInput = input;
         
 
-        lastInput.Activate = false;
+        
 
 
         //Uma lista de int que ira colocar todos os combos passados
@@ -268,9 +277,11 @@ public class ComboSystem : MonoBehaviour
             //Se a funcao continueCombo usando o input como referencia retornar true
             if(combos[i].continueCombo(input))
             {
-                
+                Debug.Log(input.AnimationName);
                 //Ele coloca na lista currentCombos o int i atual do looping
                 currentCombos.Add(i);
+
+                
 
                 //Ele deixa o leeway igual a 0
                 leeway = 0;
@@ -284,7 +295,7 @@ public class ComboSystem : MonoBehaviour
             currentCombos.RemoveAt(i);
         }
 
-        //Se o currentCombos.Count for menor o igual a 0
+        //Se o currentCombos.Count for menor ou igual a 0
         if(currentCombos.Count<=0)
         {
             //Esse era uma linha de codigo do codigo original que eu deixei comentada para referencias
@@ -338,7 +349,7 @@ public class ComboSystem : MonoBehaviour
         //Ele peregunta se o ComboInput que foi apertado e um de movimento ou de ataque
         if(att.MOorAT == movatt.Attack)
         {
-            Debug.Log(att.AnimationName);
+            
             //Se for de ataque ele ativa a animacao pelo nome dela que esta nesse ComboInput
             anim.Play(att.AnimationName, -1, 0);
             
@@ -478,6 +489,7 @@ public class Combo
         //Se o input da lista inputs for igual ao ComboInput recebida
         if(inputs[curInput].isSameAs(i)) 
         {
+            Debug.Log("Inputs"+inputs.Count);
             //Aumenta +1 no int curInput
             curInput++;
 

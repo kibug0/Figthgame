@@ -134,8 +134,8 @@ GameObject:
   - component: {fileID: 1652147970}
   - component: {fileID: 1652147969}
   - component: {fileID: 1652147968}
-  - component: {fileID: 1652147967}
   - component: {fileID: 1652147966}
+  - component: {fileID: 1652147971}
   m_Layer: 0
   m_Name: comboimage
   m_TagString: Untagged
@@ -155,157 +155,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9ce4c50a3c53d342958dcc5829e9dbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 1652147968}
---- !u!114 &1652147967
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1652147965}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63a0c67949143e249bb1f69eadd8116e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MoveDirections:
-  - esquerda
-  - direita
-  - cima
-  - baixo
-  AttackTypes:
-  - socofraco
-  - socoforte
-  - chuteforte
-  - chutefraco
-  Inputproperties:
-  - name: Soco forte
-    KeyInput: 117
-    MOorAT: 0
-    direction: 0
-    Attacktype: 1
-  - name: Soco fraco
-    KeyInput: 106
-    MOorAT: 0
-    direction: 0
-    Attacktype: 0
-  - name: chute forte
-    KeyInput: 105
-    MOorAT: 0
-    direction: 0
-    Attacktype: 2
-  - name: chute fraco
-    KeyInput: 107
-    MOorAT: 0
-    direction: 0
-    Attacktype: 3
-  - name: esquerda
-    KeyInput: 97
-    MOorAT: 1
-    direction: 0
-    Attacktype: 0
-  - name: direita
-    KeyInput: 100
-    MOorAT: 0
-    direction: 0
-    Attacktype: 0
-  - name: cima
-    KeyInput: 119
-    MOorAT: 0
-    direction: 0
-    Attacktype: 0
-  - name: baixo
-    KeyInput: 115
-    MOorAT: 0
-    direction: 0
-    Attacktype: 0
-  combos:
-  - name: sequencia de socos fracos
-    inputs:
-    - Activate: 0
-      name: soco fraco
-      MOorAT: 0
-      direction: 0
-      Attacktype: 0
-      AnimationName: weakpunch
-      length: 1
-    - Activate: 0
-      name: soco fraco
-      MOorAT: 0
-      direction: 0
-      Attacktype: 0
-      AnimationName: weakpunch
-      length: 1
-    - Activate: 0
-      name: soco fraco
-      MOorAT: 0
-      direction: 0
-      Attacktype: 0
-      AnimationName: weakpunch
-      length: 1
-    onInputted:
-      m_PersistentCalls:
-        m_Calls: []
-  - name: tornado
-    inputs:
-    - Activate: 0
-      name: 
-      MOorAT: 0
-      direction: 0
-      Attacktype: 1
-      AnimationName: strongpunch
-      length: 1
-    - Activate: 0
-      name: 
-      MOorAT: 0
-      direction: 0
-      Attacktype: 2
-      AnimationName: strongkick
-      length: 1
-    - Activate: 0
-      name: 
-      MOorAT: 0
-      direction: 0
-      Attacktype: 0
-      AnimationName: weakpunch
-      length: 1
-    onInputted:
-      m_PersistentCalls:
-        m_Calls: []
-  - name: radukan
-    inputs:
-    - Activate: 0
-      name: tras
-      MOorAT: 1
-      direction: 0
-      Attacktype: 0
-      AnimationName: 
-      length: 1
-    - Activate: 0
-      name: baixo
-      MOorAT: 1
-      direction: 3
-      Attacktype: 0
-      AnimationName: 
-      length: 1
-    - Activate: 0
-      name: frente
-      MOorAT: 1
-      direction: 1
-      Attacktype: 0
-      AnimationName: 
-      length: 1
-    - Activate: 0
-      name: socofraco
-      MOorAT: 0
-      direction: 0
-      Attacktype: 0
-      AnimationName: especialradukan
-      length: 1
-    onInputted:
-      m_PersistentCalls:
-        m_Calls: []
-  ComboLeeway: 1
   anim: {fileID: 1652147968}
 --- !u!95 &1652147968
 Animator:
@@ -394,6 +243,77 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1652147971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1652147965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d73292cfe9d73db46ae954222d0c2d01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ActionTypes:
+  - baixo
+  - lados
+  - cima
+  - soco forte
+  - soco fraco
+  - chute forte
+  - chute fraco
+  Inputs:
+  - name: Baixo
+    KeyInput: 115
+    Attacktype: 0
+  - name: Cima
+    KeyInput: 119
+    Attacktype: 2
+  - name: Esqueda
+    KeyInput: 97
+    Attacktype: 1
+  - name: Direita
+    KeyInput: 100
+    Attacktype: 1
+  - name: Soco fraco
+    KeyInput: 117
+    Attacktype: 4
+  - name: Soco forte
+    KeyInput: 106
+    Attacktype: 3
+  - name: Chute fraco
+    KeyInput: 105
+    Attacktype: 6
+  - name: Chute forte
+    KeyInput: 107
+    Attacktype: 5
+  combos:
+  - name: sequencia de socos fracos
+    actions:
+    - name: Soco fraco
+      MOorAT: 0
+      length: 0
+      AnimationName: weakpunch
+      Attacktype: 0
+    - name: Soco fraco
+      MOorAT: 0
+      length: 0
+      AnimationName: weakpunch
+      Attacktype: 0
+    - name: Soco fraco
+      MOorAT: 0
+      length: 0
+      AnimationName: weakpunch
+      Attacktype: 0
+  - name: sequencia de socos forte
+    actions: []
+  - name: tornado
+    actions: []
+  - name: especial
+    actions: []
+  ComboLeeway: 0.25
+  anim: {fileID: 0}
 --- !u!1 &1766455657
 GameObject:
   m_ObjectHideFlags: 0

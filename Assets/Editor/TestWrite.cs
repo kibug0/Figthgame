@@ -4,16 +4,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-[CustomEditor(typeof(ComboSystem))]
+[CustomEditor(typeof(comboSystem1))]
  public class TestWriter : Editor
  {
-     ComboSystem myScrip;
+     comboSystem1 myScrip;
     string filePath = "Assets/Scripts/";
-    string fileName = "AttackEnum";
+    string fileName = "ActionEnum";
  
     private void OnEnable()
     {
-        myScrip = (ComboSystem)target;
+        myScrip = (comboSystem1)target;
     }
  
     public override void OnInspectorGUI()
@@ -34,8 +34,7 @@ using UnityEditor;
             }
             */
 
-            EditorMethod.WriteToEnum(filePath, fileName, myScrip.AttackTypes);
-            EditorMethod.WriteToEnum(filePath, "DirectionEnum", myScrip.MoveDirections);
+            EditorMethod.WriteToEnum(filePath, fileName, myScrip.ActionTypes);
 
             
          }
